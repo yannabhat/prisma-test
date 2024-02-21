@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma2"
+}
+
+datasource db_2 {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL_2")
+}
+
+model user_group {
+  row_id      BigInt    @default(autoincrement())
+  user_id     String    @id(map: "PK_user_group") @db_2.NVarChar(50)
+  user_group  String?   @db_2.NVarChar(50)
+  create_date DateTime? @db_2.DateTime
+  last_update DateTime? @db_2.DateTime
+}

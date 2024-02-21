@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma1"
+}
+
+datasource db_1 {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL_1")
+}
+
+model user_master {
+  row_id      BigInt    @default(autoincrement())
+  user_id     String    @id(map: "PK_user") @db_1.NVarChar(50)
+  age         Int?
+  create_date DateTime? @db_1.DateTime
+  last_update DateTime? @db_1.DateTime
+}
